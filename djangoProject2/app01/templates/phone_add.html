@@ -1,0 +1,37 @@
+{% extends 'mom.html' %}
+{% block content %}
+    <div>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title" href="">新建号码</h3>
+                </div>
+                <div class="panel-body" >
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {% for filed in form %}
+                            <div class="form-group">
+                                <label>{{ filed.label }}</label>
+                                {{ filed }}
+                                <span style="color: red;"> {{ filed.errors.0 }}</span>
+                            </div>
+                        {% endfor %}
+
+                        <button type="submit" class="btn btn-primary" a>保 存</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<form method="post">
+    {% csrf_token %}
+    <!--
+        {{ form.name.label }}: {{ form.name }}
+        {{ form.passwd.label }}:{{ form.passwd }}
+        {{ form.age.label }}:{{ form.age }}
+        -->
+    {% for i in form %}
+        {{ i.label }}:{{ i }}
+    {% endfor %}
+</form>

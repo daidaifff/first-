@@ -1,0 +1,78 @@
+{% extends 'mom.html' %}
+{% block content %}
+    <div>
+        <div class="container">
+            <div style="margin-bottom: 10px" class="clearfix">
+                <a class="btn btn-success" href="/phone/add/">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    新建号码
+
+                </a>
+                <div style="float: right;width: 300px">
+                    <form method="get">
+                        <div class="input-group">
+
+                            <input type="text" name="q" class="form-control" placeholder="查找电话号码"
+                                   value="{{ value }}">
+                            <span class=" input-group-btn">
+                            <button class="btn btn-default" type="submit">查找</button>
+                            </span>
+
+                        </div><!-- /input-group -->
+                    </form>
+                </div>
+            </div>
+            <div class="bs-example" data-example-id="panel-without-body-with-table">
+                <div class="panel panel-default">
+                    <div class="panel-heading">用户列表</div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>号码</th>
+                            <th>价格</th>
+                            <th>级别</th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for obj in queryset %}
+                            <tr>
+                            <td>{{ obj.id }}</td>
+                            <td>{{ obj.mobile }}</td>
+                            <td>{{ obj.price }}</td>
+                            <td>{{ obj.get_leval_display }}</td>
+                            <td>{{ obj.get_status_display }}</td>
+                            <td>
+                            <a class="btn btn-primary btn-xs" href="/phone/{{ obj.id }}/edit/">编辑</a>
+                            <a class="btn btn-danger btn-xs" href="/phone/{{ obj.id }}/del">删除</a>
+                        {% endfor %}
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        {{ page_string }}
+                    </ul>
+
+
+                </nav>
+                <form method="get">
+                    <div class="col-lg-6" style="width: 180px">
+                        <div class="input-group">
+                            <input type="text" name="page" class="form-control" placeholder="查找">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Go!</button>
+                                </span>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+{% endblock %}

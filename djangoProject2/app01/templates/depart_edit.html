@@ -1,0 +1,20 @@
+
+{% extends 'mom.html' %}
+{% block content %}
+<div>
+    <div class="container">
+
+        <div class="panel-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">.
+                    <label>修改部门</label>
+                    <input type="text" class="form-control" placeholder="标题" name="title" value="{{ row_object.title }}">
+                </div>
+                <button type="submit" class="btn btn-primary">保 存</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

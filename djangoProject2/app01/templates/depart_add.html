@@ -1,0 +1,17 @@
+{% extends 'mom.html' %}
+{% block content %}
+<div>
+    <div class="container">
+        <div class="panel-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>标题</label>
+                    <input type="text" class="form-control" placeholder="添加部门标题" name="title">
+                </div>
+                <button type="submit" class="btn btn-primary">保 存</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
